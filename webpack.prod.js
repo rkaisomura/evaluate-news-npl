@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+//const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+//const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -12,9 +12,9 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
-    optimization: {
-        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
-    },
+    // optimization: {
+    //     minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    // },
     module: {
         rules: [
             {

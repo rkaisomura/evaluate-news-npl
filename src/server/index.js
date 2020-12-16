@@ -5,9 +5,9 @@ var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
 
-var textapi = new meaningCloud({
-    application_key: process.env.API_KEY
-});
+// var textApi = new meaningCloud({
+//     application_key: process.env.API_KEY
+// });
 
 const app = express()
 

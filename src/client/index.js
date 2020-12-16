@@ -1,4 +1,4 @@
-import { checkForName } from './js/nameChecker'
+import { checkForUrl } from './js/urlChecker'
 import { handleSubmit } from './js/formHandler'
 
 import './styles/resets.scss'
@@ -7,12 +7,14 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-console.log(checkForName);
 
-alert("I EXIST")
-console.log("CHANGE!!");
+const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
+const lang = '&lang=en';
+const text = '&txt=';
+
+console.log(checkForUrl);
 
 export {
-    checkForName,
+    checkForUrl,
     handleSubmit
 }
