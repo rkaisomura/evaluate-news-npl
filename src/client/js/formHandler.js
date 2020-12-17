@@ -6,10 +6,10 @@ function handleSubmit(event) {
     Client.checkForUrl(urlUser);
 
     console.log("::: Form Submitted :::");
-    fetch('http://localhost:8081/test')
+    fetch('http://localhost:8081/sentiment')
     .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message;
+    .then(function(data) {
+        document.getElementById('results').innerHTML = data.message;
     })
 }
 
