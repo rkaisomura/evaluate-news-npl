@@ -8,13 +8,13 @@ import './styles/form.scss'
 import './styles/header.scss'
 
 
-const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
+/* const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?key=';
 const lang = '&lang=en';
-const text = '&txt=';
+const text = '&txt='; */
 
-console.log(checkForUrl);
+//console.log(checkForUrl);
 
 export {
     checkForUrl,
-    handleSubmit
+    handleSubmit,
 }
