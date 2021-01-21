@@ -4,17 +4,17 @@ async function handleSubmit(event) {
     // check what text was put into the form field
     let urlUser = document.getElementById('homepage').value;
     if (Client.checkForUrl(urlUser)){
-        const resp = await fetch('/sentiment', {
+        const resp = await fetch('http://localhost:8081/sentiment', {
             method: 'POST',
             credentials: 'same-origin',
             mode: 'cors',
             headers: {
-                'Content-Type':'application/json',
+                'Content-Type':'text/plain',
             },
-            body: JSON.stringify({urlUser}),
+            body: urlUser,
         })
         .then(res => {
-            const postRes = res.json();
+            const postRes = res.text();
             return postRes;
         })
         .catch((error) => {
