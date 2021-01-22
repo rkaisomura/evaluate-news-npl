@@ -1,0 +1,16 @@
+@import 'src/client/styles/variables';
+
+footer{
+    background-color: $black-color;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-size: 15px;
+    color: $white-color;
+    text-align: center;    
+    font-family: $font;
+}

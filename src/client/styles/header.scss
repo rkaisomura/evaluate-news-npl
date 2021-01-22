@@ -1,5 +1,18 @@
+@import 'src/client/styles/variables';
+
 header {
     display: flex;
     justify-content: space-between;
     padding: 10px 40px;
+    font-family: $font;
+}
+
+.logo {
+    span {
+        color: $crimson-color;
+    }
+    font-style: italic;
+    color: $white-color;
+    font-size:x-large;
+
 }

@@ -8,6 +8,7 @@ app.use(express.static('dist'));
 //console.log(__dirname);
 
 const cors = require('cors');
+const {default: fetch} = require('node-fetch');
 app.use(cors());
 
 const bodyParser = require('body-parser');
@@ -21,8 +22,8 @@ const apiURL = 'https://api.meaningcloud.com/sentiment-2.1?key=${keyApi}&text&mo
 let urlInput = [];
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Listening on port 8081!');
+app.listen(8080, function () {
+    console.log('Listening on port 8080!');
 })
 
 app.get('/', function (req, res) {
@@ -31,7 +32,7 @@ app.get('/', function (req, res) {
 
 //POST route
 app.post('/sentiment', insertPost);
-async function insertPost(req,res){
+async function insertPost(req,resp){
     newEntry = req.body;
     urlInput = req.body.url;
     console.log(urlInput);
@@ -39,7 +40,7 @@ async function insertPost(req,res){
     const fetchResponse = await fetch(apiURL+urlInput)
     .then((fetchResponse) => fetchResponse.json())
     .then(data => {
-        res.send(data)
+        resp.send(data)
         .catch((error) => {
             console.log("Error: ", error);
         });
