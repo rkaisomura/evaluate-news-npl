@@ -1,22 +1,22 @@
 const dotenv = require('dotenv');
 dotenv.config();
+const keyApi = process.env.API_KEY;
+console.log(`API Key is ${keyApi}`);
 
 var path = require('path');
 const express = require('express');
 const app = express();
 app.use(express.static('dist'));
-//console.log(__dirname);
+console.log(__dirname);
 
 const cors = require('cors');
-const {default: fetch} = require('node-fetch');
+const fetch = require('node-fetch');
 app.use(cors());
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.text());
-
-const keyApi = process.env.API_KEY;
-console.log(`API Key is ${keyApi}`);
+app.use(bodyParser.json());
+const mockAPIResponse = require('./mockAPI.js');
 
 const apiURL = 'https://api.meaningcloud.com/sentiment-2.1?key=${keyApi}&text&model=general&lang=en&url=';
 let urlInput = [];
@@ -33,16 +33,22 @@ app.get('/', function (req, res) {
 //POST route
 app.post('/sentiment', insertPost);
 async function insertPost(req,resp){
-    newEntry = req.body;
     urlInput = req.body.url;
     console.log(urlInput);
 
-    const fetchResponse = await fetch(apiURL+urlInput)
-    .then((fetchResponse) => fetchResponse.json())
-    .then(data => {
-        resp.send(data)
-        .catch((error) => {
-            console.log("Error: ", error);
-        });
-    })
+    const fetchResponse = await fetch(apiURL+urlInput);
+    console.log(fetchResponse);
+   
+    const sentimentData = await fetchResponse.json();
+    console.log(sentimentData);
+
+    const projectData = {
+        score: sentimentData.score,
+        agreement: sentimentData.agreement,
+        subjectivity: sentimentData.subjectivity,
+        irony: sentimentData.irony,
+        confidence: sentimentData.confidence
+    }
+    console.log(projectData);
+    resp.send(projectData);
 }
