@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
+    target: 'node',
     output: {
         libraryTarget: 'var',
         library: 'Client'

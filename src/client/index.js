@@ -1,7 +1,7 @@
 import { checkForUrl } from './js/urlChecker'
 import { handleSubmit } from './js/formHandler'
+import { postData } from './js/formHandler'
 import { updateUI } from './js/formHandler'
-import { postData} from './js/formHandler'
 
 import './styles/resets.scss'
 import './styles/base.scss'
