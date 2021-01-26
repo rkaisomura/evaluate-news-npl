@@ -18,17 +18,19 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.text());
 const mockAPIResponse = require('./mockAPI.js');
 
-const apiURL = 'https://api.meaningcloud.com/sentiment-2.1?key=${keyApi}&text&model=general&lang=en&url=';
+//const apiURL = 'https://api.meaningcloud.com/sentiment-2.1?key=${keyApi}&text&model=general&lang=en&url=';
+const apiURL = 'https://api.meaningcloud.com/sentiment-2.1?';
 let urlInput = [];
 
 // designates what port the app will listen to for incoming requests
-app.listen(8083, function () {
-    console.log('Listening on port 8083!');
-})
+const port = 8081;
+app.listen(port, function () {
+    console.log(`Listening on port ${port}!`);
+});
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html');
-})
+});
 
 //POST route
 app.post('/sentiment', insertPost);
@@ -36,7 +38,8 @@ async function insertPost(req,resp){
     urlInput = req.body.url;
     console.log(urlInput);
 
-    const fetchResponse = await fetch(apiURL+urlInput);
+    const urlAPI = `${apiURL}key=${keyApi}&url=${urlInput}&lang=en`;
+    const fetchResponse = await fetch(urlAPI);
     console.log(fetchResponse);
    
     const sentimentData = await fetchResponse.text();
@@ -50,6 +53,7 @@ async function insertPost(req,resp){
         confidence: sentimentData.confidence
     }
     console.log(projectData);
+    resp.send(projectData);
 }
 
 app.get ('/sentiment', function (req, resp) {

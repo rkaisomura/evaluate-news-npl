@@ -6,7 +6,7 @@ async function handleSubmit(event) {
     // check what text was put into the form field
     let urlUser = document.getElementById('homepage').value;
     if (Client.checkForUrl(urlUser)){
-        postData('http://localhost:8083/sentiment', {url: urlUser})
+        postData('http://localhost:8081/sentiment', {url: urlUser})
         .then(function(newData) {
             updateUI();
         });
@@ -35,7 +35,7 @@ const postData = async (url, data = {}) => {
 
 //Update the UI with the results
 const updateUI = async() =>{
-    const url = "/sentiment";
+    const url = "http://localhost:8081/sentiment";
     const req = await fetch (url);
     try {
         const info = await req.text();
