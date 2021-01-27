@@ -3,11 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <!-- <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css"> -->
     </head>
 
     <body>
@@ -15,9 +10,6 @@
         <header>
             <div class="logo">
                 <span>N</span>PL
-            </div>
-            <div class="">
-                navigation
             </div>
         </header>
 
@@ -31,13 +23,23 @@
             </section>
 
             <section class = "entry">
-                <strong class = "form_results">Form Results:</strong>
+                <strong class = "form_results">Results:</strong><br>
                 <div id="results">
-                    <div id = "score"></div>
-                    <div id = "agreement"></div>
-                    <div id = "subjectivity"></div>
-                    <div id = "irony"></div>
+                    <div id = "score"></div><br>
+                    <div id = "agreement"></div><br>
+                    <div id = "subjectivity"></div><br>
+                    <div id = "irony"></div><br>
                     <div id = "confidence"></div>
+                </div>
+            </section>
+            <section class = "results_description">
+                <strong class = "description_title">Results Description:</strong><br>
+                <div id="description">
+                    <p>Polarity - indicates the polarity found (or not found) in the element it refers to. It can be strong positive, positive, neutral, negative, strong negative or without sentiment.</p>
+                    <p>Agreement - this field marks the agreement between the sentiments detected in the text, the sentence or the segment it refers to. It has two possible values: agreement or disagreement.</p>
+                    <p>Subjectivity - this field marks the subjectivity of the text. It has two possible values: objective or subjective.</p>
+                    <p>Irony - this field indicates the irony of the text. It has two possible values: nonironic or ironic.</p>
+                    <p>Confidence - this field represents the confidence associated with the sentiment analysis performed on the text. Its value is an integer number in the 0-100 range.</p>
                 </div>
             </section>
         </main>
